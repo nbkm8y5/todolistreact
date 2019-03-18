@@ -6,14 +6,6 @@ import TodoListCompletionCheckbox from './TodoListCompletionCheckbox'
 
 class TodoListTask extends Component{
 
-    constructor(props){
-        super(props);
-    }
-
-    componentWillMount(){
-        
-    }
-
     render(){
         return(
             <li className="listItem">
@@ -23,7 +15,7 @@ class TodoListTask extends Component{
         )
     }
 
-    checkBoxToggled(){
+    checkBoxToggled = () => {
         console.log("Checkbox toggled")
         this.props.stateHandler()
     }

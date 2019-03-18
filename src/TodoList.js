@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './css/TodoList.css'
 import TodoListTask from './TodoListTask'
 
@@ -7,84 +7,97 @@ var todoListLocalArray = [
     {
         'id': 0,
         'description': 'buy juice',
-        'completed' : true
+        'completed': true
     },
     {
         'id': 1,
         'description': 'take girls to school',
-        'completed' : false
-    }, 
+        'completed': false
+    },
     {
         'id': 2,
         'description': 'finish todo list app',
-        'completed' : true
+        'completed': true
     }]
-class TodoList extends Component{
+class TodoList extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-            todoListArray : todoListLocalArray
-        }
-        this.addTodoTask = this.addTodoTask.bind(this);
-        this.viewAllTasks = this.viewAllTasks.bind(this);
-        this.stateHandler = this.stateHandler.bind(this);
+    state = {
+        todoListArray: todoListLocalArray,
+        newTask : ''
     }
 
-    componentWillMount(){
-        
+    stateHandler = () => {
+        console.log("state handler called")
     }
 
-    stateHandler(){
-       console.log("state handler called")
-    }
-
-    render(){
+    render() {
 
         const list = this.state.todoListArray;
-        const listItems = list.map((l)=>
+        const listItems = list.map((l) =>
             <TodoListTask key={l.id} description={l.description} completed={l.completed} stateHandler={this.stateHandler}></TodoListTask>
         )
 
-        return(
+        return (
             <div>
                 <ul>
-                {listItems}
+                    {listItems}
                 </ul>
                 <div>
-                    <button onClick={this.addTodoTask}>+</button>
+                    <form onSubmit={this.addNewTask}>
+                        <label>
+                            <input type="text" value={this.state.newTask} onChange={this.handleNewTaskChange} />
+                        </label>
+                        <input type="submit" value="Add New Task"/>
+                    </form>
                     <button onClick={this.viewAllTasks}>View All Tasks</button>
                 </div>
             </div>
         )
     }
 
-    addTodoTask(event){
-        event.preventDefault();
-        console.log('add button clicked');
+    handleNewTaskChange= (event) =>{
+        this.setState({
+            newTask: event.target.value
+        })
     }
 
-    deleteTodoTask(event){
+    addNewTask = (event) => {
+        event.preventDefault();
+
+        var tempTodoListItem = {
+            'id': todoListLocalArray.length + 1,
+            'description': this.state.newTask,
+            'completed': false
+        }
+
+        todoListLocalArray.push(tempTodoListItem)
+
+        this.setState({
+            todoListArray: todoListLocalArray,
+            newTask: ''
+        })
+    }
+
+    deleteTodoTask = (event) => {
         event.preventDefault();
     }
 
-    updateTodoTask(event){
+    updateTodoTask = (event) => {
         event.preventDefault();
     }
 
-    viewAllTasks(event){
+    viewAllTasks = (event) => {
         event.preventDefault();
         console.log("View all tasks button clicked");
         //default state is only show uncompleted tasks
         //this will show all tasks completed and uncompleted
     }
 
-    markTaskComplete(){
+    markTaskComplete = () => {
 
     }
 
-    markTaskIncomplete(){
+    markTaskIncomplete = () => {
 
     }
 }
