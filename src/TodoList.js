@@ -1,13 +1,16 @@
 
 import React, {Component} from 'react';
 import './TodoList.css'
-
-
+import TodoListTask from './TodoListTask'
+var todoListLocalArray = ['buy juice', 'take girls to school', 'finish todo list app']
 class TodoList extends Component{
 
     constructor(props){
         super(props);
-        var todoListItemArray = ["Buy orange juice", "Go wash clothes", "Pick up Breanne from school"];
+
+        this.state = {
+            todoListArray : todoListLocalArray
+        }
     }
 
     componentWillMount(){
@@ -17,7 +20,13 @@ class TodoList extends Component{
     render(){
         return(
             <div>
-                Todo List
+                <ul>
+                <TodoListTask></TodoListTask>
+                <TodoListTask></TodoListTask>
+                <TodoListTask></TodoListTask>
+                <TodoListTask></TodoListTask>
+                <TodoListTask></TodoListTask>
+                </ul>
             </div>
         )
     }
@@ -44,7 +53,7 @@ class TodoList extends Component{
     }
 
     markTaskIncomplete(){
-        
+
     }
 }
 
