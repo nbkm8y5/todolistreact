@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import './TodoListTask.css'
+import './css/TodoListTask.css'
 import TodoListCompletionCheckbox from './TodoListCompletionCheckbox'
 
 class TodoListTask extends Component{

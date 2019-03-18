@@ -1,7 +1,6 @@
 
 import React, {Component} from 'react';
-import './TodoList.css'
-import './'
+import './css/TodoList.css'
 import TodoListTask from './TodoListTask'
 
 var todoListLocalArray = [

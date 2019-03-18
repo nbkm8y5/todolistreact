@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 import TodoList from './TodoList';
-import logo from './General_Electric_logo.png'
+import logo from './media/General_Electric_logo.png'
 
 class App extends Component {
   render() {
