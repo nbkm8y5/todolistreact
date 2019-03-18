@@ -7,7 +7,7 @@ var todoListLocalArray = [
     {
         'id': 0,
         'description': 'buy juice',
-        'completed': true
+        'completed': false
     },
     {
         'id': 1,
@@ -17,13 +17,29 @@ var todoListLocalArray = [
     {
         'id': 2,
         'description': 'finish todo list app',
-        'completed': true
+        'completed': false
+    },
+    {
+        'id': 4,
+        'description': 'make todo list app look cool',
+        'completed': false
+    },
+    {
+        'id': 5,
+        'description': 'watch some tv',
+        'completed': false
+    },
+    {
+        'id': 6,
+        'description': 'read a book',
+        'completed': false
     }]
 class TodoList extends Component {
 
     state = {
         todoListArray: todoListLocalArray,
-        newTask : ''
+        newTask : '',
+        viewAllTasks: false
     }
 
     stateHandler = () => {
@@ -31,11 +47,24 @@ class TodoList extends Component {
     }
 
     render() {
+        var listItems;
+        const completeTaskList = this.state.todoListArray;
 
-        const list = this.state.todoListArray;
-        const listItems = list.map((l) =>
-            <TodoListTask key={l.id} description={l.description} completed={l.completed} stateHandler={this.stateHandler}></TodoListTask>
-        )
+        if(this.state.viewAllTasks){
+            listItems = completeTaskList.map((l) =>
+                <TodoListTask key={l.id} description={l.description} completed={l.completed} stateHandler={this.stateHandler}></TodoListTask>
+            )
+        }else{
+            var uncompletedTaskList = [];
+            completeTaskList.forEach((item) => {
+                if(!item.completed){
+                    uncompletedTaskList.push(item)
+                }
+            })
+            listItems = uncompletedTaskList.map((l) =>
+                <TodoListTask key={l.id} description={l.description} completed={l.completed} stateHandler={this.stateHandler}></TodoListTask>
+            )
+        }
 
         return (
             <div>
@@ -86,11 +115,16 @@ class TodoList extends Component {
         event.preventDefault();
     }
 
+    /**
+     * default state is only show uncompleted tasks
+     * toggles between uncompleted and completed tasks
+     */
     viewAllTasks = (event) => {
         event.preventDefault();
-        console.log("View all tasks button clicked");
-        //default state is only show uncompleted tasks
-        //this will show all tasks completed and uncompleted
+        this.setState({
+            todoListArray: todoListLocalArray,
+            viewAllTasks: !this.state.viewAllTasks
+        })
     }
 
     markTaskComplete = () => {
