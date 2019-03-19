@@ -15,11 +15,12 @@ class TodoList extends Component {
     render() {
         var listItems;
         const completeTaskList = this.state.todoListArray;
-
+        var taskState = ''
         if(this.state.viewAllTasks){
             listItems = completeTaskList.map((l) =>
                 <TodoListTask key={l.id} id={l.id} description={l.description} completed={l.completed} taskCompletedCheckBoxStateHandler={this.taskCompletedCheckBoxStateHandler}></TodoListTask>
             )
+            taskState = 'Show Remaining Tasks'
         }else{
             var uncompletedTaskList = [];
             completeTaskList.forEach((item) => {
@@ -30,11 +31,12 @@ class TodoList extends Component {
             listItems = uncompletedTaskList.map((l) =>
                 <TodoListTask key={l.id} id={l.id} description={l.description} completed={l.completed} taskCompletedCheckBoxStateHandler={this.taskCompletedCheckBoxStateHandler}></TodoListTask>
             )
+            taskState = 'Show All Tasks'
         }
 
         return (
             <div>
-                <button onClick={this.viewAllTasks}>Toggle All Tasks</button>
+                <button onClick={this.viewAllTasks}>{taskState}</button>
                 <ul>
                     {listItems}
                 </ul>
