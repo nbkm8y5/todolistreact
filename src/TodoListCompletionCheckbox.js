@@ -1,5 +1,6 @@
 
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './css/TodoListCompletionCheckbox.css'
 
 
@@ -14,14 +15,16 @@ class TodoListCompletionCheckbox extends Component{
         )
     }
 
+    /**
+     * passes id of task item that toggled completion to update state in grandparent
+     */
     checkBoxToggled = () => {
-        console.log("Checkbox toggled")
-        this.props.stateHandler()
+        this.props.taskCompletedCheckBoxStateHandler(this.props.id)
     }
 }
 
-// TodoListCompletionCheckbox.PropTypes = {
-//     stateHandler: React.PropTypes.function
-// }
+TodoListCompletionCheckbox.propTypes = {
+    taskCompletedCheckBoxStateHandler : PropTypes.func
+}
 
 export default TodoListCompletionCheckbox;

@@ -7,12 +7,12 @@ var todoListLocalArray = [
     {
         'id': 0,
         'description': 'buy juice',
-        'completed': false
+        'completed': true
     },
     {
         'id': 1,
         'description': 'take girls to school',
-        'completed': false
+        'completed': true
     },
     {
         'id': 2,
@@ -27,7 +27,7 @@ var todoListLocalArray = [
     {
         'id': 5,
         'description': 'watch some tv',
-        'completed': false
+        'completed': true
     },
     {
         'id': 6,
@@ -42,17 +42,13 @@ class TodoList extends Component {
         viewAllTasks: false
     }
 
-    stateHandler = () => {
-        console.log("state handler called")
-    }
-
     render() {
         var listItems;
         const completeTaskList = this.state.todoListArray;
 
         if(this.state.viewAllTasks){
             listItems = completeTaskList.map((l) =>
-                <TodoListTask key={l.id} description={l.description} completed={l.completed} stateHandler={this.stateHandler}></TodoListTask>
+                <TodoListTask key={l.id} id={l.id} description={l.description} completed={l.completed} taskCompletedCheckBoxStateHandler={this.taskCompletedCheckBoxStateHandler}></TodoListTask>
             )
         }else{
             var uncompletedTaskList = [];
@@ -62,12 +58,13 @@ class TodoList extends Component {
                 }
             })
             listItems = uncompletedTaskList.map((l) =>
-                <TodoListTask key={l.id} description={l.description} completed={l.completed} stateHandler={this.stateHandler}></TodoListTask>
+                <TodoListTask key={l.id} id={l.id} description={l.description} completed={l.completed} taskCompletedCheckBoxStateHandler={this.taskCompletedCheckBoxStateHandler}></TodoListTask>
             )
         }
 
         return (
             <div>
+                <button onClick={this.viewAllTasks}>Toggle All Tasks</button>
                 <ul>
                     {listItems}
                 </ul>
@@ -78,7 +75,6 @@ class TodoList extends Component {
                         </label>
                         <input type="submit" value="Add New Task"/>
                     </form>
-                    <button onClick={this.viewAllTasks}>View All Tasks</button>
                 </div>
             </div>
         )
@@ -94,7 +90,7 @@ class TodoList extends Component {
         event.preventDefault();
 
         var tempTodoListItem = {
-            'id': todoListLocalArray.length + 1,
+            'id': todoListLocalArray.length,
             'description': this.state.newTask,
             'completed': false
         }
@@ -127,12 +123,27 @@ class TodoList extends Component {
         })
     }
 
-    markTaskComplete = () => {
-
+    /**
+     * provides id of task item where completion checkbox was toggled to change state in parent or
+     * in this case grandparent
+     */
+    taskCompletedCheckBoxStateHandler = (id) => {
+        this.toggleTaskComplete(id)
     }
 
-    markTaskIncomplete = () => {
-
+      /**
+     * toggles completed tasks
+     */
+    toggleTaskComplete = (id) => {
+        const listArray = this.state.todoListArray
+        for (var i in listArray){
+            if(listArray[i].id === id){
+                listArray[i].completed = !listArray[i].completed
+            }
+        }
+        this.setState({
+            todoListArray: listArray
+        })
     }
 }
 

@@ -1,6 +1,5 @@
 
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import './css/TodoListTask.css'
 import TodoListCompletionCheckbox from './TodoListCompletionCheckbox'
 
@@ -10,19 +9,10 @@ class TodoListTask extends Component{
         return(
             <li className="listItem">
                 <p>{this.props.description}</p>
-                <TodoListCompletionCheckbox completed={this.props.completed} stateHandler={this.props.stateHandler}></TodoListCompletionCheckbox>
+                <TodoListCompletionCheckbox id={this.props.id} completed={this.props.completed} taskCompletedCheckBoxStateHandler={this.props.taskCompletedCheckBoxStateHandler}></TodoListCompletionCheckbox>
             </li>
         )
     }
-
-    checkBoxToggled = () => {
-        console.log("Checkbox toggled")
-        this.props.stateHandler()
-    }
-}
-
-TodoListTask.propTypes = {
-    stateHandler: PropTypes.func
 }
 
 export default TodoListTask;
