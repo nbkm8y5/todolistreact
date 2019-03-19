@@ -35,17 +35,17 @@ class TodoList extends Component {
         }
 
         return (
-            <div>
-                <button onClick={this.viewAllTasks}>{taskState}</button>
+            <div className="TodoList">
+                <button className="TaskToggleButton" onClick={this.viewAllTasks}>{taskState}</button>
                 <ul>
                     {listItems}
                 </ul>
                 <div>
                     <form onSubmit={this.addNewTask}>
                         <label>
-                            <input type="text" value={this.state.newTask} onChange={this.handleNewTaskChange} />
+                            <input className="NewTaskInput" type="text" value={this.state.newTask} onChange={this.handleNewTaskChange} />
                         </label>
-                        <input type="submit" value="Add New Task"/>
+                        <input className="AddNewTask" type="submit" value="Add New Task"/>
                     </form>
                 </div>
             </div>
@@ -62,7 +62,7 @@ class TodoList extends Component {
         event.preventDefault();
 
         var tempTodoListItem = {
-            'id': todoListModel.length,
+            'id': todoListModel.length + 1,
             'description': this.state.newTask,
             'completed': false
         }
