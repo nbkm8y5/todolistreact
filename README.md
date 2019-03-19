@@ -23,4 +23,10 @@ cd todolistreact
 npm start
 ```
 
-Note: please have node installed in your computer and git
+Note: please have node installed in your computer and git]
+
+Additional features:
+
+Drag and drop to delete tasks
+
+![](name-of-giphy.gif)
