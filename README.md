@@ -12,4 +12,4 @@ cd todolistreact
 
 npm start
 ```
-Note: please have node installed in your computer
+Note: please have node installed in your computer and git
