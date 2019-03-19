@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react';
 import './css/TodoListTask.css'
+import PropTypes from 'prop-types';
 import TodoListCompletionCheckbox from './TodoListCompletionCheckbox'
 
 class TodoListTask extends Component{
@@ -15,7 +16,7 @@ class TodoListTask extends Component{
         }
 
         return(
-            <li className={style}>
+            <li className={style} draggable="true" onDragStart={this.taskItemDragStarted} onDragEnd={this.taskItemDragEnded}>
                 <div className="listItemOuterBox">
                     <div className="TaskDescription">
                         <p>{this.props.description}</p>
@@ -25,6 +26,20 @@ class TodoListTask extends Component{
             </li>
         )
     }
+
+    taskItemDragStarted = ()=>{
+        this.props.drag(this.props.id)
+    }
+
+    taskItemDragEnded = ()=>{
+        this.props.dragEnd()
+    }
+}
+
+
+TodoListTask.propTypes = {
+    drag : PropTypes.func,
+    dragEnd: PropTypes.func
 }
 
 export default TodoListTask;

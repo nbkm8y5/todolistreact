@@ -2,11 +2,28 @@ ul {
     list-style-type: none;
     padding: 0px;
 }
+@media only screen and (min-width: 1200px) {
+    .TaskToggleButton, .AddNewTask, .NewTaskInput{
+        height: 38px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+}
 
-.TaskToggleButton, .AddNewTask, .NewTaskInput{
-    height: 38px;
-    border-radius: 5px;
-    font-size: 16px;
+@media only screen and (min-width: 576px) and (max-width: 1199px) {
+    .TaskToggleButton, .AddNewTask, .NewTaskInput{
+        height: 38px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 575px) {
+    .TaskToggleButton, .AddNewTask, .NewTaskInput{
+        height: 38px;
+        border-radius: 5px;
+        font-size: 10px;
+    }
 }
 
 .TodoList{

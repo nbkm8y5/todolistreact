@@ -32,3 +32,9 @@
     justify-content: flex-end;
     padding: 10px 0px;
 }
+
+.Trash-logo img{
+    height: 50px;
+    pointer-events: none;
+    padding: 10px;
+  }

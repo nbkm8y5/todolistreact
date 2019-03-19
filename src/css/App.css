@@ -1,15 +1,35 @@
 @media only screen and (min-width: 1200px) {
   .App {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     width: 30%;
-    margin-left: auto;
-    margin-right: auto; 
   }
 }
 
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .App {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .App {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .App {
+    width: 90%;
+  }
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto; 
+}
 
 .App-logo {
   height: 50px;
