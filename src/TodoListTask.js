@@ -8,8 +8,12 @@ class TodoListTask extends Component{
     render(){
         return(
             <li className="listItem">
-                <p>{this.props.description}</p>
-                <TodoListCompletionCheckbox id={this.props.id} completed={this.props.completed} taskCompletedCheckBoxStateHandler={this.props.taskCompletedCheckBoxStateHandler}></TodoListCompletionCheckbox>
+                <div className="listItemOuterBox">
+                    <div className="TaskDescription">
+                        <p>{this.props.description}</p>
+                    </div>
+                    <TodoListCompletionCheckbox id={this.props.id} completed={this.props.completed} taskCompletedCheckBoxStateHandler={this.props.taskCompletedCheckBoxStateHandler}></TodoListCompletionCheckbox>
+                </div>
             </li>
         )
     }
