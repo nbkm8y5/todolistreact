@@ -7,7 +7,7 @@ class Header extends Component {
     return (
         <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" /> 
-          <h2>{this.props.viewTitle}</h2>
+          <h4>{this.props.viewTitle}</h4>
         </header>
     );
   }

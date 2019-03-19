@@ -29,6 +29,6 @@
 .listItemOuterBox{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 10px 0px;
 }
