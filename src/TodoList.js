@@ -2,22 +2,25 @@
 import React, { Component } from 'react';
 import './css/TodoList.css'
 import TodoListTask from './TodoListTask'
-import todoListModel from './models/listModel'
 import trash from './media/trash.png'
 
 class TodoList extends Component {
-
+    
     state = {
-        todoListArray: todoListModel,
+        todoList: [],
         newTask : '',
         viewAllTasks: false,
         trashCanHidden: true,
         currentItemDragged: -1
     }
 
+    componentDidMount(){
+        this.loadOffline()
+    }
+
     render() {
         var listItems;
-        const completeTaskList = this.state.todoListArray;
+        const completeTaskList = this.state.todoList;
         var taskState = ''
         if(this.state.viewAllTasks){
             listItems = completeTaskList.map((l) =>
@@ -105,19 +108,20 @@ class TodoList extends Component {
     drop = (event) =>{
         event.preventDefault();
 
-        const tempListArray = this.state.todoListArray
+        const tempDropList = this.state.todoList
 
-        for (var i in tempListArray){
-            if(tempListArray[i].id === this.state.currentItemDragged){
-                tempListArray.splice(i, 1)        
+        for (var i in tempDropList){
+            if(tempDropList[i].id === this.state.currentItemDragged){
+                tempDropList.splice(i, 1)        
             }
         }
 
         this.setState ({
             trashCanHidden : true,
             currentItemDragged: -1,
-            todoListArray: tempListArray
+            todoList: tempDropList
         })
+        this.saveOffline()
     }
 
     /**
@@ -127,17 +131,18 @@ class TodoList extends Component {
         event.preventDefault();
 
         var tempTodoListItem = {
-            'id': todoListModel.length + 1,
+            'id': this.state.todoList.length + 1,
             'description': this.state.newTask,
             'completed': false
         }
 
-        todoListModel.push(tempTodoListItem)
-
+        const tempAddList = this.state.todoList
+        tempAddList.push(tempTodoListItem)
         this.setState({
-            todoListArray: todoListModel,
+            todoList: tempAddList,
             newTask: ''
         })
+        this.saveOffline()
     }
 
     /**
@@ -147,7 +152,6 @@ class TodoList extends Component {
     viewAllTasks = (event) => {
         event.preventDefault();
         this.setState({
-            todoListArray: todoListModel,
             viewAllTasks: !this.state.viewAllTasks
         })
     }
@@ -164,15 +168,32 @@ class TodoList extends Component {
      * toggles completed tasks
      */
     toggleTaskComplete = (id) => {
-        const listArray = this.state.todoListArray
-        for (var i in listArray){
-            if(listArray[i].id === id){
-                listArray[i].completed = !listArray[i].completed
+        const completeTaskChangeList = this.state.todoList
+        for (var i in completeTaskChangeList){
+            if(completeTaskChangeList[i].id === id){
+                completeTaskChangeList[i].completed = !completeTaskChangeList[i].completed
             }
         }
         this.setState({
-            todoListArray: listArray
+            todoList: completeTaskChangeList
         })
+        this.saveOffline()
+    }
+
+    loadOffline = () => {
+
+        if (window.localStorage.getItem("list")) {
+            console.log('loading offline')
+            this.setState({
+                todoList: JSON.parse(window.localStorage.getItem("list"))
+            })
+        } else {
+            console.log('offline empty')
+        }
+    }
+
+    saveOffline = ()=>{
+        window.localStorage.setItem("list", JSON.stringify(this.state.todoList))
     }
 }
 
