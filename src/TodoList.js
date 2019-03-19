@@ -2,42 +2,12 @@
 import React, { Component } from 'react';
 import './css/TodoList.css'
 import TodoListTask from './TodoListTask'
+import todoListModel from './models/listModel'
 
-var todoListLocalArray = [
-    {
-        'id': 0,
-        'description': 'buy juice',
-        'completed': true
-    },
-    {
-        'id': 1,
-        'description': 'take girls to school',
-        'completed': true
-    },
-    {
-        'id': 2,
-        'description': 'finish todo list app',
-        'completed': false
-    },
-    {
-        'id': 4,
-        'description': 'make todo list app look cool',
-        'completed': false
-    },
-    {
-        'id': 5,
-        'description': 'watch some tv',
-        'completed': true
-    },
-    {
-        'id': 6,
-        'description': 'read a book',
-        'completed': false
-    }]
 class TodoList extends Component {
 
     state = {
-        todoListArray: todoListLocalArray,
+        todoListArray: todoListModel,
         newTask : '',
         viewAllTasks: false
     }
@@ -90,25 +60,17 @@ class TodoList extends Component {
         event.preventDefault();
 
         var tempTodoListItem = {
-            'id': todoListLocalArray.length,
+            'id': todoListModel.length,
             'description': this.state.newTask,
             'completed': false
         }
 
-        todoListLocalArray.push(tempTodoListItem)
+        todoListModel.push(tempTodoListItem)
 
         this.setState({
-            todoListArray: todoListLocalArray,
+            todoListArray: todoListModel,
             newTask: ''
         })
-    }
-
-    deleteTodoTask = (event) => {
-        event.preventDefault();
-    }
-
-    updateTodoTask = (event) => {
-        event.preventDefault();
     }
 
     /**
@@ -118,7 +80,7 @@ class TodoList extends Component {
     viewAllTasks = (event) => {
         event.preventDefault();
         this.setState({
-            todoListArray: todoListLocalArray,
+            todoListArray: todoListModel,
             viewAllTasks: !this.state.viewAllTasks
         })
     }
