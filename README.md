@@ -1,5 +1,5 @@
 # Todo List App
-## Built with React
+### Built with React
 
 open terminal in Mac or Linux environment
 
