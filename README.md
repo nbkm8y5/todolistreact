@@ -29,4 +29,4 @@ Additional features:
 
 Drag and drop to delete tasks
 
-![](name-of-giphy.gif)
+![](delete-file.gif)
