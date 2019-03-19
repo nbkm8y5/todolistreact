@@ -8,7 +8,7 @@ class TodoListCompletionCheckbox extends Component{
 
     render(){
         return(
-            <div>
+            <div className="checkboxContainer">
                 <input type="Checkbox" checked={this.props.completed} onChange={this.checkBoxToggled}></input>
             </div>
         )
