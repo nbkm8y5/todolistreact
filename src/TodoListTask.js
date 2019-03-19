@@ -6,8 +6,16 @@ import TodoListCompletionCheckbox from './TodoListCompletionCheckbox'
 class TodoListTask extends Component{
 
     render(){
+
+        var style = '';
+        if(this.props.completed){
+            style = 'listItemCompleted'
+        }else{
+            style = 'listItemUncompleted'
+        }
+
         return(
-            <li className="listItem">
+            <li className={style}>
                 <div className="listItemOuterBox">
                     <div className="TaskDescription">
                         <p>{this.props.description}</p>
