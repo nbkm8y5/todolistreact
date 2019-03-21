@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import './css/TodoList.css'
 import TodoListTask from './TodoListTask'
+import Alert from './Alert'
 import trash from './media/trash.png'
 
 class TodoList extends Component {
@@ -12,7 +13,7 @@ class TodoList extends Component {
         viewAllTasks: false,
         trashCanHidden: true,
         currentItemDragged: -1,
-        hideEmptyListPlaceholder: false,
+        listStatusAlert: false,
         hideViewTasksButton: true
     }
 
@@ -43,10 +44,24 @@ class TodoList extends Component {
                 taskState = 'Show All Tasks'
             }
 
+            var alert = {}
+
+            const alertAllTasksComplete = {
+                'cssClass' : 'alert-tasks-complete',
+                'alertDescription' : 'Congratulations!  You finished all your todo list tasks!'
+            }
+
+            if(this.state.todoList.length === 0 || this.state.todoList === null){
+                alert = {
+                    'cssClassName' : 'alert-no-tasks',
+                    'description' : 'Your todo list is empty.  Add a new task to your todo list.'
+                }
+            }    
+
         return (
             <div className="TodoList">
                 <button className="TaskToggleButton" onClick={this.viewAllTasks} hidden={this.state.hideViewTasksButton}>{taskState}</button>
-                <label hidden={this.state.hideEmptyListPlaceholder}>Your todo list is empty.  Add a new task to do.</label>
+                <Alert alertClass={alert.cssClassName} alertDescription={alert.description} listAlertStatus={this.state.listStatusAlert}></Alert>
                 <ul>
                     {listItems}
                 </ul>
@@ -127,7 +142,7 @@ class TodoList extends Component {
                 trashCanHidden : true,
                 currentItemDragged: -1,
                 todoList: tempDropList,
-                hideEmptyListPlaceholder: false,
+                listStatusAlert: false,
                 hideViewTasksButton: true
             })
         }else{
@@ -159,7 +174,7 @@ class TodoList extends Component {
         this.setState({
             todoList: tempAddList,
             newTask: '',
-            hideEmptyListPlaceholder: true,
+            listStatusAlert: true,
             hideViewTasksButton: false
         })
         this.saveOffline()
@@ -215,14 +230,14 @@ class TodoList extends Component {
             if (mtua.length === 0) {
                 console.log("list length zero...")
                 this.setState({
-                    hideEmptyListPlaceholder: false,
+                    listStatusAlert: false,
                     hideViewTasksButton: true
                 })
             } else {
                 console.log("list length greater than zero...")
                 this.setState({
                     todoList: JSON.parse(window.localStorage.getItem("list")),
-                    hideEmptyListPlaceholder: true,
+                    listStatusAlert: true,
                     hideViewTasksButton: false
                 })
             }
