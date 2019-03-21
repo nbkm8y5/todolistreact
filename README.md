@@ -5,10 +5,11 @@ open terminal in Mac or Linux environment
 
 Type:
 
+Download Source code
+(zip)
 ```
-git clone https://github.com/nbkm8y5/todolistreact.git
 
-cd todolistreact
+unzip todolistreact
 
 npm start
 ```
