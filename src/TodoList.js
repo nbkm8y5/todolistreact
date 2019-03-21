@@ -11,10 +11,12 @@ class TodoList extends Component {
         newTask : '',
         viewAllTasks: false,
         trashCanHidden: true,
-        currentItemDragged: -1
+        currentItemDragged: -1,
+        hideEmptyListPlaceholder: false,
+        hideViewTasksButton: true
     }
 
-    componentDidMount(){
+    UNSAFE_componentWillMount(){
         this.loadOffline()
     }
 
@@ -22,27 +24,29 @@ class TodoList extends Component {
         var listItems;
         const completeTaskList = this.state.todoList;
         var taskState = ''
-        if(this.state.viewAllTasks){
-            listItems = completeTaskList.map((l) =>
-                <TodoListTask key={l.id} id={l.id} description={l.description} completed={l.completed} taskCompletedCheckBoxStateHandler={this.taskCompletedCheckBoxStateHandler} drag={this.drag} dragEnd={this.dragEnd}></TodoListTask>
-            )
-            taskState = 'Show Remaining Tasks'
-        }else{
-            var uncompletedTaskList = [];
-            completeTaskList.forEach((item) => {
-                if(!item.completed){
-                    uncompletedTaskList.push(item)
-                }
-            })
-            listItems = uncompletedTaskList.map((l) =>
-                <TodoListTask key={l.id} id={l.id} description={l.description} completed={l.completed} taskCompletedCheckBoxStateHandler={this.taskCompletedCheckBoxStateHandler} drag={this.drag} dragEnd={this.dragEnd}></TodoListTask>
-            )
-            taskState = 'Show All Tasks'
-        }
+
+            if(this.state.viewAllTasks){
+                listItems = completeTaskList.map((l) =>
+                    <TodoListTask key={l.id} id={l.id} description={l.description} completed={l.completed} taskCompletedCheckBoxStateHandler={this.taskCompletedCheckBoxStateHandler} drag={this.drag} dragEnd={this.dragEnd}></TodoListTask>
+                )
+                taskState = 'Show Remaining Tasks'
+            }else{
+                var uncompletedTaskList = [];
+                completeTaskList.forEach((item) => {
+                    if(!item.completed){
+                        uncompletedTaskList.push(item)
+                    }
+                })
+                listItems = uncompletedTaskList.map((l) =>
+                    <TodoListTask key={l.id} id={l.id} description={l.description} completed={l.completed} taskCompletedCheckBoxStateHandler={this.taskCompletedCheckBoxStateHandler} drag={this.drag} dragEnd={this.dragEnd}></TodoListTask>
+                )
+                taskState = 'Show All Tasks'
+            }
 
         return (
             <div className="TodoList">
-                <button className="TaskToggleButton" onClick={this.viewAllTasks}>{taskState}</button>
+                <button className="TaskToggleButton" onClick={this.viewAllTasks} hidden={this.state.hideViewTasksButton}>{taskState}</button>
+                <label hidden={this.state.hideEmptyListPlaceholder}>Your todo list is empty.  Add a new task to do.</label>
                 <ul>
                     {listItems}
                 </ul>
@@ -116,11 +120,25 @@ class TodoList extends Component {
             }
         }
 
-        this.setState ({
-            trashCanHidden : true,
-            currentItemDragged: -1,
-            todoList: tempDropList
-        })
+        if(tempDropList.length === 0){
+            console.log('list empty. clearing window.localstorage')
+
+            this.setState ({
+                trashCanHidden : true,
+                currentItemDragged: -1,
+                todoList: tempDropList,
+                hideEmptyListPlaceholder: false,
+                hideViewTasksButton: true
+            })
+        }else{
+            console.log('list not empty. not clearing window.localstorage')
+
+            this.setState ({
+                trashCanHidden : true,
+                currentItemDragged: -1,
+                todoList: tempDropList
+            })
+        }
         this.saveOffline()
     }
 
@@ -140,7 +158,9 @@ class TodoList extends Component {
         tempAddList.push(tempTodoListItem)
         this.setState({
             todoList: tempAddList,
-            newTask: ''
+            newTask: '',
+            hideEmptyListPlaceholder: true,
+            hideViewTasksButton: false
         })
         this.saveOffline()
     }
@@ -182,17 +202,34 @@ class TodoList extends Component {
 
     loadOffline = () => {
 
-        if (window.localStorage.getItem("list")) {
-            console.log('loading offline')
-            this.setState({
-                todoList: JSON.parse(window.localStorage.getItem("list"))
-            })
+        var mtua = JSON.parse(window.localStorage.getItem("list"))
+
+        if (mtua === null) {
+            console.log('loading offline...')
+            console.log("offline list null...")
+            console.log("loading empty list...")
         } else {
-            console.log('offline empty')
+            console.log('loading offline...')
+            console.log('offline not null...')
+
+            if (mtua.length === 0) {
+                console.log("list length zero...")
+                this.setState({
+                    hideEmptyListPlaceholder: false,
+                    hideViewTasksButton: true
+                })
+            } else {
+                console.log("list length greater than zero...")
+                this.setState({
+                    todoList: JSON.parse(window.localStorage.getItem("list")),
+                    hideEmptyListPlaceholder: true,
+                    hideViewTasksButton: false
+                })
+            }
         }
     }
 
-    saveOffline = ()=>{
+    saveOffline = () => {
         window.localStorage.setItem("list", JSON.stringify(this.state.todoList))
     }
 }
