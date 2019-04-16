@@ -204,11 +204,14 @@ class TodoList extends Component {
      */
     toggleTaskComplete = (id) => {
         const completeTaskChangeList = this.state.todoList
-        for (var i in completeTaskChangeList){
-            if(completeTaskChangeList[i].id === id){
-                completeTaskChangeList[i].completed = !completeTaskChangeList[i].completed
+
+        //changed to for of loop
+        for(const element of completeTaskChangeList){
+            if(element.id === id){
+                element.completed = !element.completed
             }
         }
+        
         this.setState({
             todoList: completeTaskChangeList
         })
