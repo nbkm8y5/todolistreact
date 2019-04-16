@@ -129,9 +129,9 @@ class TodoList extends Component {
 
         const tempDropList = this.state.todoList
 
-        for (var i in tempDropList){
-            if(tempDropList[i].id === this.state.currentItemDragged){
-                tempDropList.splice(i, 1)        
+        for (const element of tempDropList){
+            if(element.id === this.state.currentItemDragged){
+                tempDropList.splice(element, 1)
             }
         }
 
@@ -211,7 +211,7 @@ class TodoList extends Component {
                 element.completed = !element.completed
             }
         }
-        
+
         this.setState({
             todoList: completeTaskChangeList
         })
