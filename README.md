@@ -24,10 +24,12 @@ unzip todolistreact.zip
 
 cd todolistreact
 
+npm install
+
 npm start
 ```
 
-Note: please have node installed in your computer and git
+Note: please have node installed in your computer and git. Safe with node v12.14.1
 
 Additional features:
 
