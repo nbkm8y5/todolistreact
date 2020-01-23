@@ -12,6 +12,8 @@ unzip todolistreact.zip
 
 cd todolistreact
 
+npm install
+
 npm start
 ```
 
