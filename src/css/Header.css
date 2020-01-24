@@ -1,14 +1,21 @@
 .App-header {
-    background-color: #282c34;
-    /* min-height: 25vh; */
+    background-color: #3A4851;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-start;
-    /* font-size: calc(10px + 2vmin); */
     color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding: 10px;
+    align-content: center;
+    height: 95px;
   }
-  
+
+  .Header-flex-column-one{
+    flex-grow: 1;
+    min-width: 40px;
+  }
+
+  .Header-app-logo {
+    height: 40px;
+    pointer-events: none;
+    padding: 44px 0px 11px 0px;
+  }

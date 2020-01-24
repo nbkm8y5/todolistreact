@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './css/TodoList.css'
 import TodoListTask from './TodoListTask'
 import Alert from './Alert'
-import trash from './media/trash.png'
+import trash from './media/trash.svg'
 
 class TodoList extends Component {
     
@@ -53,8 +53,8 @@ class TodoList extends Component {
 
             if(this.state.todoList.length === 0 || this.state.todoList === null){
                 alert = {
-                    'cssClassName' : 'alert-no-tasks',
-                    'description' : 'Your todo list is empty.  Add a new task to your todo list.'
+                    'cssClassName' : 'alert-no-tasks'//,
+                    // 'description' : 'There are no tasks to do. Press "+" to add a new task'
                 }
             }    
 

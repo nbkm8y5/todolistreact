@@ -18,7 +18,7 @@
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .App {
-    width: 90%;
+    width: 100%;
   }
 }
 
@@ -29,10 +29,4 @@
   justify-content: center;
   margin-left: auto;
   margin-right: auto; 
-}
-
-.App-logo {
-  height: 50px;
-  pointer-events: none;
-  padding: 10px;
 }

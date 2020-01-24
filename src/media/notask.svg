@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="664px" viewBox="0 0 375 664" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>No Task Background</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="375" height="664"></rect>
+    </defs>
+    <g id="Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="No-Task" transform="translate(0.000000, -95.000000)">
+            <g id="No-Task-Background" transform="translate(0.000000, 95.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Background" fill="#F3F4F5" xlink:href="#path-1"></use>
+                <text id="There-is-no-task-to" mask="url(#mask-2)" font-family="HelveticaNeue, Helvetica Neue" font-size="24" font-weight="normal" fill="#000000">
+                    <tspan x="71.028" y="313">There is no task to do</tspan>
+                    <tspan x="37.392" y="341">Press “+” to add a new task</tspan>
+                </text>
+                <g id="Add-Task-Mascot" mask="url(#mask-2)">
+                    <g transform="translate(129.000000, 139.000000)">
+                        <rect id="Body" stroke="#31577C" stroke-width="3" fill="#DDEBF9" fill-rule="evenodd" x="16.5" y="1.5" width="82" height="106"></rect>
+                        <polyline id="Left-leg" stroke="#31577C" stroke-width="3" fill="none" points="41.4739202 122.603425 41.4739202 143.764876 34.5184101 150.283595"></polyline>
+                        <polyline id="Right-leg" stroke="#31577C" stroke-width="3" fill="none" transform="translate(77.996165, 136.443510) scale(-1, 1) translate(-77.996165, -136.443510) " points="81.4739202 122.603425 81.4739202 143.764877 74.51841 150.283595"></polyline>
+                        <polyline id="Left-arm" stroke="#31577C" stroke-width="3" fill="none" points="16.2547938 44 0 64.1786383 24.1024828 82.0799391"></polyline>
+                        <polyline id="Right-arm" stroke="#31577C" stroke-width="3" fill="none" transform="translate(103.051241, 63.039970) scale(-1, 1) translate(-103.051241, -63.039970) " points="107.254794 44 91 64.1786383 115.102483 82.0799391"></polyline>
+                        <g id="Add-Button" stroke="none" fill="none" transform="translate(22.000000, 57.000000)" fill-rule="evenodd">
+                            <circle id="Blue-Circle" fill="#3874BA" cx="36" cy="36" r="36"></circle>
+                            <rect id="Rectangle" fill="#FFFFFF" x="21.1034483" y="33.5172414" width="29.7931034" height="4.96551724" rx="2"></rect>
+                            <rect id="Rectangle" fill="#FFFFFF" x="33.5172414" y="21.1034483" width="4.96551724" height="29.7931034" rx="2"></rect>
+                        </g>
+                        <path d="M33.1311684,28.6214882 C34.93452,24.1136982 36.7378715,21.8598032 38.541223,21.8598032 C40.3445745,21.8598032 42.147926,24.1136982 43.9512775,28.6214882" id="Left-eye" stroke="#31577C" stroke-width="3" fill="none"></path>
+                        <path d="M71,28.761685 C72.8033515,24.253895 74.606703,22 76.4100545,22 C78.2134061,22 80.0167576,24.253895 81.8201091,28.761685" id="Right-eye" stroke="#31577C" stroke-width="3" fill="none"></path>
+                        <path d="M44.8848713,39.500381 L70.0562653,39.500381 C68.923957,44.618263 67.7002261,47.8165006 66.3850727,49.0950938 C64.4123425,51.0129837 62.2955801,52.8877851 57.5,52.8877851 C52.7044199,52.8877851 50.4271371,51.2753081 48.2403515,49.0950938 C46.7824944,47.6416176 45.664001,44.44338 44.8848713,39.500381 Z" id="Smile" stroke="#31577C" stroke-width="2" fill="#FFFFFF" fill-rule="evenodd"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

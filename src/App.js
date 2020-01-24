@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header viewTitle="GE Todo List"></Header>
+        <Header viewTitle="Today"></Header>
         <TodoList></TodoList>
       </div>
     );

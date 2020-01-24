@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="868px" height="998px" viewBox="0 0 868 998" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Trash Can</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-66.000000, -2.000000)">
+            <g id="Trash-Can" transform="translate(66.000000, 24.000000)">
+                <rect id="Rectangle" fill="#4A90E2" x="1" y="280" width="867" height="44" rx="22"></rect>
+                <rect id="Rectangle" fill="#4A90E2" x="0" y="150" width="867" height="44" rx="22"></rect>
+                <rect id="Rectangle" fill="#4A90E2" x="282" y="432" width="44" height="392" rx="22"></rect>
+                <rect id="Rectangle" fill="#4A90E2" x="412" y="432" width="44" height="392" rx="22"></rect>
+                <rect id="Rectangle" fill="#4A90E2" x="542" y="432" width="44" height="392" rx="22"></rect>
+                <path d="M130,303 L130,853.786213 C130,909.014688 174.771525,953.786213 230,953.786213 L638.252326,953.786213 C693.480801,953.786213 738.252326,909.014688 738.252326,853.786213 L738.252326,303 L738.252326,303" id="Path" stroke="#4A90E2" stroke-width="44" stroke-linejoin="round"></path>
+                <path d="M304,174.539325 L304,100 C304,44.771525 348.771525,3.85670157e-14 404,0 L463.142732,0 C518.371207,1.82764032e-14 563.142732,44.771525 563.142732,100 L563.142732,174.539325 L563.142732,174.539325" id="Path-2" stroke="#4A90E2" stroke-width="44" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
