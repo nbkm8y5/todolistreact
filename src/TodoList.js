@@ -1,11 +1,10 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import './css/TodoList.css'
 import TodoListTask from './TodoListTask'
-import Alert from './Alert'
 import trash from './media/trash.svg'
 
-class TodoList extends Component {
+class TodoList extends React.Component {
     
     state = {
         todoList: [],
@@ -17,7 +16,7 @@ class TodoList extends Component {
         hideViewTasksButton: true
     }
 
-    UNSAFE_componentWillMount(){
+    componentDidMount(){
         this.loadOffline()
     }
 
@@ -44,24 +43,21 @@ class TodoList extends Component {
                 taskState = 'Show All Tasks'
             }
 
-            var alert = {}
-
-            const alertAllTasksComplete = {
-                'cssClass' : 'alert-tasks-complete',
-                'alertDescription' : 'Congratulations!  You finished all your todo list tasks!'
-            }
+            var backgroundAlert = {}
 
             if(this.state.todoList.length === 0 || this.state.todoList === null){
-                alert = {
-                    'cssClassName' : 'alert-no-tasks'//,
-                    // 'description' : 'There are no tasks to do. Press "+" to add a new task'
+                backgroundAlert = {
+                    'cssClassName' : 'backgroundAlertNoTasks todoList'
                 }
-            }    
+            }else{
+                backgroundAlert = {
+                    'cssClassName' : 'backgroundAlertTasks todoList'
+                }
+            }   
 
         return (
-            <div className="TodoList">
+            <div className={backgroundAlert.cssClassName}>
                 <button className="TaskToggleButton" onClick={this.viewAllTasks} hidden={this.state.hideViewTasksButton}>{taskState}</button>
-                <Alert alertClass={alert.cssClassName} alertDescription={alert.description} listAlertStatus={this.state.listStatusAlert}></Alert>
                 <ul>
                     {listItems}
                 </ul>

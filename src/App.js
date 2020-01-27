@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './css/App.css';
 import TodoList from './TodoList';
 import Header from './Header';
+import Footer from './Footer';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div className="App">
         <Header viewTitle="Today"></Header>
         <TodoList></TodoList>
+        <Footer></Footer>
       </div>
     );
   }

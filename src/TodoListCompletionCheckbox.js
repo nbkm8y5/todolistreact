@@ -1,10 +1,10 @@
 
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './css/TodoListCompletionCheckbox.css'
 
 
-class TodoListCompletionCheckbox extends Component{
+class TodoListCompletionCheckbox extends React.Component{
 
     render(){
         return(
